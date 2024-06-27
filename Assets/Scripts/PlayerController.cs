@@ -30,11 +30,11 @@ public class PlayerController : MonoBehaviour
         // adjust the x scale based on movement direction
         if (movement.x > 0)
         {
-            transform.localScale = new Vector3(size, transform.localScale.y, transform.localScale.z);
+            transform.localScale = new Vector3(size, size, size);
         }
         else if (movement.x < 0)
         {
-            transform.localScale = new Vector3(-size, transform.localScale.y, transform.localScale.z);
+            transform.localScale = new Vector3(-size, size, size);
         }
     }
 }
