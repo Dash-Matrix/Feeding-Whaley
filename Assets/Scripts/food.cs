@@ -23,7 +23,7 @@ public class food : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<PlayerController>().size += scaleUpgrade;
+            collision.gameObject.GetComponent<PlayerController>().FishEaten(scaleUpgrade);
 
             uiManager.UpdateScore();
         }

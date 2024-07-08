@@ -1,7 +1,12 @@
+using Cinemachine;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public UIManager iuManager;
+    public int eatenFishes = 0;
+    public int fishesToEat = 0;
+
     // the speed of the character
     private float speed = 6f;
 
@@ -9,6 +14,9 @@ public class PlayerController : MonoBehaviour
     public Joystick joystick;
 
     public float size = 1;
+
+    public CinemachineVirtualCamera virtualCamera;
+    public float OrthoSize = 5;
 
     private void Update()
     {
@@ -35,6 +43,22 @@ public class PlayerController : MonoBehaviour
         else if (movement.x < 0)
         {
             transform.localScale = new Vector3(-size, size, size);
+        }
+    }
+
+    public void FishEaten(float upgradeSize)
+    {
+        eatenFishes++;
+
+        size += upgradeSize;
+
+        OrthoSize += upgradeSize * 3f;
+        virtualCamera.m_Lens.OrthographicSize = OrthoSize;
+
+        if(eatenFishes == fishesToEat)
+        {
+            Debug.Log("Fishes Eaten");
+            iuManager.Won();
         }
     }
 }
